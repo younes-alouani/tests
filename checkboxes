@@ -1,0 +1,31 @@
+<input type="checkbox" id="checkAll"/> ALL
+
+<br />
+
+<input type="checkbox" name="test" class="cb-element" checked id="1" /> Checkbox  1
+<input type="checkbox" name="test" class="cb-element" id="2" /> Checkbox  2
+<input type="checkbox" name="test" class="cb-element" id="3" /> Checkbox  3
+
+<script language="JavaScript">
+/* Make select/deselect all working */
+$("#checkAll").change(function () {
+    $("input:checkbox.cb-element").prop('checked', $(this).prop("checked"));
+});
+$(".cb-element").change(function () {
+		_tot = $(".cb-element").length						  
+		_tot_checked = $(".cb-element:checked").length;
+		
+		if(_tot != _tot_checked){
+			$("#checkAll").prop('checked',false);
+		}
+});
+/* returns an array of the IDs of selected checkboxes */
+var checkedValue =[]; 
+var inputElements = document.getElementsByName('test');
+for(var i=0; inputElements[i]; ++i){
+      if(inputElements[i].checked){
+           checkedValue.push(inputElements[i].id);
+      }
+}
+alert(checkedValue)
+</script>
